@@ -20,7 +20,7 @@ h2 {
 }
 
 h1, h2, a, p {
-    margin: 25px 0px 25px;
+    margin: 25px 0px 25px 0px;
 }
 
 .container {
