@@ -5,7 +5,7 @@ import gunicorn
 app = Flask(__name__)
 
 name = ""
-domain = "http://127.0.0.1:5000"
+domain = "https://aircards.herokuapp.com"
 question = ""
 
 @app.route("/", methods=["POST", "GET"])
