@@ -1,9 +1,8 @@
 from flask import Flask, redirect, url_for, render_template, request, flash, Markup
 import questions
+import gunicorn
 
 app = Flask(__name__)
-
-app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 name = ""
 domain = "http://127.0.0.1:5000"
@@ -19,7 +18,6 @@ def home():
     else:
         return render_template("index.html")
 
-
 @app.route("/question/<name>/<question>", methods=["POST", "GET"])
 def question(name, question):
     if request.method == "POST":
@@ -32,11 +30,11 @@ def question(name, question):
 
 @app.route("/response/<name>/<question>/<response>/") # passes parameter to variable
 def response(name, question, response):
-    return render_template("response.html", question=question, response=response, name=name)
+    return render_template("response.html", name=name, question=question, response=response)
 
 @app.route("/<url>/")
 def notFound(url):
-    return redirect(url_for("question")) # redirects to home
+    return redirect(url_for("home")) # redirects to home
 
 if __name__ == "__main__":
     app.run(debug=True)
