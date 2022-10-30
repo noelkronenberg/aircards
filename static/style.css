@@ -1,7 +1,14 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 h1, h2, a, p, ul, ol, li {
     font-family: sans-serif;
     color: #000;
 }
+
 h1 {
     font-size: 60px;
 }
@@ -10,6 +17,10 @@ h2 {
     font-size: 24px;
     font-weight: 400;
     color: #757575;
+}
+
+h1, h2, a, p {
+    margin: 25px 0px 25px;
 }
 
 .container {
