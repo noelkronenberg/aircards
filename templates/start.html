@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+    <head>
+        <title>AirCards: Start</title>
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="container">
+
+            <h1>
+                Great! Now follow these steps
+            </h1>
+
+            <h2>
+                You got this question: <br>
+                {{question}} <br>
+                Now send it to someone!
+            </h2>
+
+            <ol>
+                <li>Copy this link: <span id="copy" onclick="copyEvent('copy')" class="copy-link highlighted">{{link}}</span></li>
+                <li>Send it via AirDrop</li>
+            </ol>
+
+            
+
+            <div class="flashes">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages%}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+
+        </div>
+
+        <script>
+            function copyEvent(id)
+            {
+                var str = document.getElementById(id);
+                window.getSelection().selectAllChildren(str);
+                document.execCommand("Copy")
+            }
+        </script>
+
+    </body>
+</html>

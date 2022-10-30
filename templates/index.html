@@ -1,0 +1,44 @@
+<!doctype html>
+<html>
+    <head>
+        <title>AirCards: A card game for AirDrop.</title>
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"/>
+    </head>
+    <body>
+        <div class="container">
+
+            <h1>
+                Play a question game via AirDrop!
+            </h1>
+
+            <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla condimentum diam eu dolor tincidunt hendrerit.</h2>
+
+            <form action="#" method="post">
+                <p><input type="text" name="userInput" placeholder="Type the name of your device" class="input-field"/></p>
+                <p><input type="submit" value="Continue" class="input-button"/></p>
+            </form>
+
+            <div class="flashes">
+                {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                        {% for message in messages%}
+                            <p>{{message}}</p>
+                        {% endfor %}
+                    {% endif %}
+                {% endwith %}
+            </div>
+
+
+        </div>
+
+        <script>
+            function copyEvent(id)
+            {
+                var str = document.getElementById(id);
+                window.getSelection().selectAllChildren(str);
+                document.execCommand("Copy")
+            }
+        </script>
+
+    </body>
+</html>
