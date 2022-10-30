@@ -1,5 +1,6 @@
 h1, h2, a, p, ul, ol, li {
     font-family: sans-serif;
+    color: #000;
 }
 h1 {
     font-size: 60px;
