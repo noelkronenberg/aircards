@@ -3,6 +3,7 @@
     <head>
         <title>AirCards: Send</title>
         <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div class="container">
@@ -13,7 +14,7 @@
 
             <ol>
                 <li>Copy this link: <span id="copy" onclick="copyEvent('copy')" class="copy-link highlighted">{{link}}</span></li>
-                <li>Send it via AirDrop to: {{name}}</li>
+                <li>Send it via AirDrop to: <span class="highlighted">{{name}}</span></li>
             </ol>
 
         </div>

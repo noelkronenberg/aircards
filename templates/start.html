@@ -3,6 +3,7 @@
     <head>
         <title>AirCards: Start</title>
         <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
         <div class="container">
@@ -13,7 +14,7 @@
 
             <h2>
                 You got this question: <br>
-                {{question}} <br>
+                <span class="highlighted">{{question}}</span> <br>
                 Now send it to someone!
             </h2>
 
