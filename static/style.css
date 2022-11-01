@@ -99,6 +99,9 @@ ol, ul {
     .desktop {
         display: none;
     }
+    .container {
+        margin: 5vh auto 5vh !important;
+    }
 }
 
 @media only screen and (min-width: 600px) {
