@@ -46,7 +46,7 @@ input {
     outline: none; 
     font-family: Helvetica, sans-serif;
     width: 450px;
-    font-size: 28px;
+    font-size: 24px;
     margin-bottom: 10px;
 }
 .input-button {
@@ -93,4 +93,19 @@ ol, ul {
     h1 {
         font-size: 45px;
     }
-  }
+    .mobile {
+        display: block;
+    }
+    .desktop {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 600px) {
+    .mobile {
+        display: none;
+    }
+    .desktop {
+        display: block;
+    }
+}

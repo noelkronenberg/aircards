@@ -12,10 +12,18 @@
                 A simple URL-based question game for AirDrop.
             </h1>
 
-            <form action="#" method="post">
+            <form action="#" method="post" class="desktop">
                 <p><input type="text" name="userInput" placeholder="Type the name of your device" class="input-field"/></p>
                 <p><input type="submit" value="Continue" class="input-button"/></p>
             </form>
+
+            <div class="mobile">
+                <h2>Type the name of your device: </h2>
+                <form action="#" method="post">
+                    <p><input type="text" name="userInput" placeholder="e.g. Toms iPhone" class="input-field"/></p>
+                    <p><input type="submit" value="Continue" class="input-button"/></p>
+                </form>
+            </div>
 
             <div class="flashes">
                 {% with messages = get_flashed_messages() %}
