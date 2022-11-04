@@ -2,13 +2,13 @@
 
 A simple URL-based question game for AirDrop.
 
-## Cards Demo
+## Cards
 
 Try cards [here](https://aircards.herokuapp.com/) or watch the demo:
 
 https://user-images.githubusercontent.com/79874249/200057535-7abd7b68-8ee9-4337-a306-4f9fe578faa8.mp4
 
-## Message Demo
+## Message
 
 Try messages [here](https://aircards.herokuapp.com/message/) or watch the demo:
 
