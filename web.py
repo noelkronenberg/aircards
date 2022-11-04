@@ -30,7 +30,7 @@ def question(name, question):
     else:
         return render_template("question.html", name=name, question=question)
 
-@app.route("/response/<name>/<question>/<response>/") # passes parameter to variable
+@app.route("/response/<name>/<question>/<response>/")
 def response(name, question, response):
     return render_template("response.html", name=name, question=question, response=response)
 
@@ -60,7 +60,7 @@ def inbox(message, previous):
 
 @app.route("/<url>/")
 def notFound(url):
-    return redirect(url_for("home")) # redirects to home
+    return redirect(url_for("home"))
 
 if __name__ == "__main__":
     app.run(debug=True)
