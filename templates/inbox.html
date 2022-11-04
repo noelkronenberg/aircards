@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+    <head>
+        <title>AirCards: Inbox</title>
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+
+            <div class="intro">
+                <h2>
+                    Hey, <span class="highlighted">{{name}}</span> sent you a message via <span class="highlighted">AirDrop</span>!
+                </h2>
+            </div>
+
+            <div class="previous-message">
+                <p class="from-me">{{previous}}</p>
+            </div>
+
+            <div class="current-message">
+                <h1 class="from-them">{{message}}</h1>
+            </div>
+
+            <form action="#" method="post">
+                <p><input type="text" name="userInput" placeholder="Type your answer" class="input-field"/></p>
+                <p><input type="submit" value="Continue" class="input-button"/></p>
+            </form>
+
+        </div>
+    </body>
+</html>
