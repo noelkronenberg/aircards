@@ -5,75 +5,42 @@
   word-break: break-word;
 }
 
+:root {
+    --color-1: #000; 
+    --color-2: #fff;
+    --color-3: rgb(245, 79, 24);
+
+    --font: Helvetica, sans-serif;
+
+    --font-size-1: 60px;
+    --font-size-2: 24px;
+    --font-size-3: 16px;
+
+    --content-width: 85%;
+    --max-content-width: 800px;
+
+    --border-radius: 10px;
+}
+
+/* START: Basics (general styles applying to multiple elements) */
+
 h1, h2, a, p, ul, ol, li {
-    font-family: sans-serif;
-    color: #000;
+    font-family: var(--font);
+    color: var(--color-1);
 }
 
 h1 {
-    font-size: 60px;
+    font-size: var(--font-size-1);
 }
 
 h2 {
-    font-size: 24px;
+    font-size: var(--font-size-2);
     font-weight: 400;
     color: #757575;
 }
 
 h1, h2, a, p {
     margin: 25px 0px 25px 0px;
-}
-
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    align-content: center;
-    text-align: center;
-    max-width: 800px;
-    margin: 20vh auto 20vh !important;
-    padding: 0px 25px 0px 25px;
-}
-
-input {
-    font-family: sans-serif;
-    font-size: 18px;
-}
-.input-field {
-    text-align: center;
-    border-style: none;
-    background: transparent; 
-    outline: none; 
-    font-family: Helvetica, sans-serif;
-    width: 450px;
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-.input-button {
-    background-color: #000;
-    padding: 5px 15px 5px 15px;
-    text-decoration: none;
-    color: #fff;
-    border: 0px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: 500;
-    font-size: 22px;
-}
-.button:hover {
-    cursor: pointer;
-}
-
-.highlighted {
-    font-weight: 600;
-}
-
-.lower-highlight {
-    font-style: italic;
-}
-
-.intro {
-    max-width: 400px;
 }
 
 ul, ol, li {
@@ -85,13 +52,76 @@ ol, ul {
     margin-left: 25px;
 }
 
-.copy-link {
+li {
+    margin: 15px auto;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+    max-width: 800px;
+    width: var(--content-width);
+    margin: 20vh auto 20vh !important;
+}
+
+.highlighted {
+    font-weight: 600;
+}
+
+.lower-highlight {
+    font-style: italic;
+}
+
+.subheading {
+    margin-bottom: 25px;
+}
+
+/* END: Basics */
+
+/* START: Input */
+
+input {
+    font-family: sans-serif;
+    font-size: 18px;
+}
+
+.input-field {
+    text-align: center;
+    border-style: none;
+    background: transparent; 
+    outline: none; 
+    font-family: Helvetica, sans-serif;
+    width: 450px;
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+.input-button {
+    background-color: var(--color-1);
+    padding: 5px 15px 5px 15px;
+    text-decoration: none;
+    color: var(--color-2);
+    border: 0px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 22px;
+}
+
+.button:hover {
     cursor: pointer;
 }
 
+/* END: Input */
+
+/* START: Media Queries */
+
 @media only screen and (max-width: 600px) {
-    h1 {
-        font-size: 45px;
+    :root {    
+        --font-size-1: 35px;
     }
     .mobile {
         display: block;
@@ -101,6 +131,11 @@ ol, ul {
     }
     .container {
         margin: 5vh auto 5vh !important;
+    }
+    .input-field {
+        border-bottom: 2px solid var(--color-1);
+        width: 100%;
+        padding-bottom: 10px;
     }
 }
 
@@ -112,3 +147,133 @@ ol, ul {
         display: block;
     }
 }
+
+/* END: Media Queries */
+
+/* START: Specifics */
+
+.intro {
+    max-width: 400px;
+}
+
+.copy-link {
+    cursor: pointer;
+}
+
+.instructions {
+    margin: 25px 0px;
+    background-color: #ededed;
+    padding: 10px 45px 10px 55px;
+    border-radius: var(--border-radius);
+}
+
+.logo-header {
+    width: 55px;
+}
+
+/* END: Specifics */
+
+/* START: iMessage (reference: https://codepen.io/AllThingsSmitty/pen/jommGQ) */
+
+/* note: previous */
+
+.previous-message {
+    min-width: 100%;
+    margin: 10px auto;
+}
+
+.previous-message p {
+    border-radius: 1.15rem;
+    line-height: 1.25;
+    max-width: 75%;
+    padding: 0.5rem .875rem;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.previous-message p::before,
+.previous-message p::after {
+    bottom: -0.1rem;
+    content: "";
+    height: 1rem;
+    position: absolute; 
+}
+  
+p.from-me {
+    align-self: flex-end;
+    background-color: #248bf5;
+    color: #fff; 
+}
+
+p.from-me::before {
+    border-bottom-left-radius: 0.8rem 0.7rem;
+    border-right: 1rem solid #248bf5;
+    right: -0.35rem;
+    transform: translate(0, -0.1rem);
+}
+
+p.from-me::after {
+    background-color: #fff;
+    border-bottom-left-radius: 0.5rem;
+    right: -40px;
+    transform:translate(-30px, -2px);
+    width: 10px;
+}
+  
+p[class^="from-"] {
+    margin: auto;
+    width: fit-content;
+}
+
+/* note: current */
+
+.current-message {
+    min-width: 100%;
+    margin: 10px auto;
+}
+
+.current-message h1 {
+    border-radius: 1.15rem;
+    line-height: 1.25;
+    max-width: 75%;
+    padding: 0.5rem .875rem;
+    position: relative;
+    word-wrap: break-word;
+}
+
+.current-message h1::before,
+.current-message h1::after {
+    bottom: -0.1rem;
+    content: "";
+    height: 1rem;
+    position: absolute; 
+}
+
+h1.from-them {
+    align-items: flex-start;
+    background-color: #e5e5ea;
+    color: #000;
+    font-weight: 400;
+}
+
+h1.from-them:before {
+    border-bottom-right-radius: 0.8rem 0.7rem;
+    border-left: 1rem solid #e5e5ea;
+    left: -0.35rem;
+    transform: translate(0, -0.1rem);
+}
+
+h1.from-them::after {
+    background-color: #fff;
+    border-bottom-right-radius: 0.5rem;
+    left: 20px;
+    transform: translate(-30px, -2px);
+    width: 10px;
+}
+
+h1[class^="from-"] {
+    margin: auto;
+    width: fit-content;
+}
+
+/* END: iMessage */

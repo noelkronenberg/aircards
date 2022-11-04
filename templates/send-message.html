@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>AirCards: Start</title>
+        <title>AirCards: Send</title>
         <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -9,23 +9,16 @@
         <div class="container">
 
             <h1>
-                Great! <br>
-                Now follow these steps:
+                Send your message!
             </h1>
 
-            <h2 class="subheading">
-                You got this question: <br>
-                <span class="highlighted">{{question}}</span> <br>
-                Now send it to someone!
-            </h2>
-
             <ol class="instructions">
-                <li>Copy this link: <span id="copy" onclick="copyEvent('copy')" class="copy-link highlighted">{{link}}</span></li>
+                <li>Copy this link: <span id="copy" onclick="copyEvent('copy')" class="copy-link highlighted">{{message_link}}</span></li>
                 <li>Send it via <a target="_blank" href="https://support.apple.com/en-us/HT204144">AirDrop</a></li>
             </ol>
 
         </div>
-
+        
         <script>
             function copyEvent(id)
             {

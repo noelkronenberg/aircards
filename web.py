@@ -4,9 +4,11 @@ import gunicorn
 
 app = Flask(__name__)
 
-name = ""
+name = "someone"
 domain = "https://aircards.herokuapp.com"
 question = ""
+message = ""
+message_link = ""
 
 @app.route("/", methods=["POST", "GET"])
 def home():
@@ -31,6 +33,30 @@ def question(name, question):
 @app.route("/response/<name>/<question>/<response>/") # passes parameter to variable
 def response(name, question, response):
     return render_template("response.html", name=name, question=question, response=response)
+
+@app.route("/message/", methods=["POST", "GET"])
+def message():
+    if request.method == "POST":
+        message: str = request.form["userInput"]
+        message_link = f"{domain}/message/inbox/initial/{message}/"
+        return render_template("send-message.html", message_link=message_link)
+    return render_template("message.html")
+
+@app.route("/message/inbox/initial/<message>/", methods=["POST", "GET"])
+def initial_inbox(message):
+    if request.method == "POST":
+        answer: str = request.form["userInput"]
+        message_link = f"{domain}/message/inbox/{message}/{answer}"
+        return render_template("send-message.html", message_link=message_link)
+    return render_template("initial-inbox.html", name=name, message=message)
+
+@app.route("/message/inbox/<previous>/<message>/", methods=["POST", "GET"])
+def inbox(message, previous):
+    if request.method == "POST":
+        answer: str = request.form["userInput"]
+        message_link = f"{domain}/message/inbox/{message}/{answer}"
+        return render_template("send-message.html", message_link=message_link)
+    return render_template("inbox.html", name=name, message=message, previous=previous)
 
 @app.route("/<url>/")
 def notFound(url):
