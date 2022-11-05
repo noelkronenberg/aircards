@@ -9,6 +9,7 @@
     --color-1: #000; 
     --color-2: #fff;
     --color-3: rgb(245, 79, 24);
+    --color-4: #757575;
 
     --font: Helvetica, sans-serif;
 
@@ -36,7 +37,7 @@ h1 {
 h2 {
     font-size: var(--font-size-2);
     font-weight: 400;
-    color: #757575;
+    color: var(--color-4);
 }
 
 h1, h2, a, p {
@@ -278,3 +279,51 @@ h1[class^="from-"] {
 }
 
 /* END: iMessage */
+
+/* START: note (reference: https://mentormate.com/blog/css-postit-note/) */
+
+.postit {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    align-content: center;
+    line-height: 1;
+    text-align:center;     
+    width: 200px;    
+    position:relative;   
+    border-bottom-right-radius: 60px 5px;
+    background-color: #FAECCD; 
+    padding: 0px 25px;
+    max-width: 100%;
+    min-width: 60%;
+}
+
+.postit:after {     
+    content: "";
+    position:absolute;
+    z-index:-1;
+    right:-0px; bottom:20px;
+    width:200px;
+    height: 25px;
+    background: rgba(0, 0, 0, 0.2);
+    box-shadow:2px 15px 5px rgba(0, 0, 0, 0.40);
+    -moz-transform: matrix(-1, -0.1, 0, 1, 0, 0);
+    -webkit-transform: matrix(-1, -0.1, 0, 1, 0, 0);
+    -o-transform: matrix(-1, -0.1, 0, 1, 0, 0);
+    -ms-transform: matrix(-1, -0.1, 0, 1, 0, 0);
+    transform: matrix(-1, -0.1, 0, 1, 0, 0);
+}
+
+.postit p {
+    text-align:center;
+    font-size: var(--font-size-3);
+    color: #93691c;
+}
+
+@media only screen and (max-width: 600px) {
+    .postit {
+        min-width: 100%;
+    }
+}
+
+/* END: note */
