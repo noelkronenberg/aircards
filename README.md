@@ -1,6 +1,6 @@
 # AirCards
 
-A simple URL-based question game for AirDrop.
+Simple URL-based interactions via AirDrop.
 
 ## Cards
 
