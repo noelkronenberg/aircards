@@ -11,8 +11,12 @@ question = ""
 message = ""
 message_link = ""
 
-@app.route("/", methods=["POST", "GET"])
+@app.route("/")
 def home():
+        return render_template("index.html")
+
+@app.route("/cards/", methods=["POST", "GET"])
+def cards():
     if request.method == "POST":
         name: str = request.form["userInput"]
         question = str(questions.get_question())
@@ -21,7 +25,7 @@ def home():
         link = f"{domain}/question/{name}/{question}"
         return render_template("start.html", question=url.toString(question), link=link)
     else:
-        return render_template("index.html")
+        return render_template("cards.html")
 
 @app.route("/question/<name>/<question>/", methods=["POST", "GET"])
 def question(name, question):

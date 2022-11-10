@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title>AirCards: Send a message via AirDrop.</title>
+        <title>AirCards: A card game for AirDrop.</title>
         <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
@@ -11,20 +11,20 @@
             <a href="/">
                 <img class="logo-header" src="{{ url_for('static', filename='airdrop-icon.svg') }}" alt="AirDrop"/>
             </a>
-            
+
             <!-- source: https://icons8.com/icons/set/airdrop-logo -->
 
             <h1>
-               Send a message via AirDrop.
+                Play a question game via AirDrop.
             </h1>
 
             <form action="#" method="post" class="desktop">
-                <p><input type="text" name="userInput" placeholder="Type your message" class="input-field"/></p>
+                <p><input type="text" name="userInput" placeholder="Type the name of your device" class="input-field"/></p>
                 <p><input type="submit" value="Continue" class="input-button"/></p>
             </form>
 
             <div class="mobile">
-                <h2>Type your message: </h2>
+                <h2>Type the name of your device: </h2>
                 <form action="#" method="post">
                     <p><input type="text" name="userInput" placeholder="" class="input-field"/></p>
                     <p><input type="submit" value="Continue" class="input-button"/></p>

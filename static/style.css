@@ -327,3 +327,22 @@ h1[class^="from-"] {
 }
 
 /* END: note */
+
+/* Index */
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    gap: 25px;
+}
+
+@media only screen and (max-width: 600px) {
+    .menu {
+        flex-direction: column;
+        gap: 15px;
+        margin-top: 25px;
+    }
+    .menu a {
+        margin: 0px;
+    }
+}
