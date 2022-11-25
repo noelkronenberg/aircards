@@ -44,34 +44,71 @@ def question(name, question):
 def response(name, question, response):
     return render_template("response.html", name=url.toString(name), question=url.toString(question), response=url.toString(response))
 
-@app.route("/message/", methods=["POST", "GET"])
-def message():
+# 1. Person A: get first message (of person A)
+
+@app.route("/message/initial/", methods=["POST", "GET"])
+def initial_message():
     if request.method == "POST":
         message: str = request.form["userInput"]
         message = url.toUrl(message)
-        message_link = f"{domain}/message/inbox/initial/{message}/"
-        return render_template("send-message.html", message_link=message_link)
+        return redirect(f"/message/name/{message}/")
     return render_template("message.html")
 
-@app.route("/message/inbox/initial/<message>/", methods=["POST", "GET"])
-def initial_inbox(message):
-    if request.method == "POST":
-        answer: str = request.form["userInput"]
-        answer = url.toUrl(answer)
-        message = url.toUrl(message)
-        message_link = f"{domain}/message/inbox/{message}/{answer}"
-        return render_template("send-message.html", message_link=message_link)
-    return render_template("initial-inbox.html", name=url.toString(name), message=url.toString(message))
+# 2. Person A: get name (of person A)
 
-@app.route("/message/inbox/<previous>/<message>/", methods=["POST", "GET"])
-def inbox(message, previous):
+@app.route("/message/name/<message>/", methods=["POST", "GET"])
+def name_a(message):
+    if request.method == "POST":
+        name: str = request.form["userInput"]
+        name = url.toUrl(name)
+        message_link = f"{domain}/message/inbox/initial/{name}/{message}/"
+        return render_template("send-initial-message.html", message_link=message_link)
+    return render_template("name.html")
+
+# 3. Person B: receive first message (of person A), get answer (of person B)
+
+@app.route("/message/inbox/initial/<name_a>/<message>/", methods=["POST", "GET"])
+def initial_inbox(name_a, message):
+    if request.method == "POST":
+        answer: str = request.form["userInput"]
+        answer = url.toUrl(answer)
+        return redirect(f"/message/b/{name_a}/name/{message}/{answer}/")
+    return render_template("initial-inbox.html", name=url.toString(name_a), message=url.toString(message))
+
+# 4. Person B: get name (of person B)
+
+@app.route("/message/b/<name_a>/name/<message>/<answer>/", methods=["POST", "GET"])
+def name_b(name_a, message, answer):
+    if request.method == "POST":
+        name_b: str = request.form["userInput"]
+        name_b = url.toUrl(name_b)
+        message_link = f"{domain}/message/inbox/a/{name_a}/{name_b}/{message}/{answer}/"
+        return render_template("send-message.html", name=url.toString(name_a), message_link=message_link)
+    return render_template("name-b.html", name=url.toString(name_a), message=url.toString(message))
+
+# 4. Person A: receive previous answer (of person B), send new message (to person B)
+
+@app.route("/message/inbox/a/<name_a>/<name_b>/<previous>/<message>/", methods=["POST", "GET"])
+def inbox_a(name_a, name_b, message, previous):
     if request.method == "POST":
         answer: str = request.form["userInput"]
         answer = url.toUrl(answer)
         message = url.toUrl(message)
-        message_link = f"{domain}/message/inbox/{message}/{answer}"
-        return render_template("send-message.html", message_link=message_link)
-    return render_template("inbox.html", name=url.toString(name), message=url.toString(message), previous=url.toString(previous))
+        message_link = f"{domain}/message/inbox/b/{name_a}/{name_b}/{message}/{answer}"
+        return render_template("send-message.html", name=url.toString(name_b), message_link=message_link)
+    return render_template("inbox.html", name=url.toString(name_b), message=url.toString(message), previous=url.toString(previous))
+
+# 4. Person B: receive previous answer (of person A), send new message (to person A)
+
+@app.route("/message/inbox/b/<name_a>/<name_b>/<previous>/<message>/", methods=["POST", "GET"])
+def inbox_b(name_a, name_b, message, previous):
+    if request.method == "POST":
+        answer: str = request.form["userInput"]
+        answer = url.toUrl(answer)
+        message = url.toUrl(message)
+        message_link = f"{domain}/message/inbox/a/{name_a}/{name_b}/{message}/{answer}"
+        return render_template("send-message.html", name=url.toString(name_a), message_link=message_link)
+    return render_template("inbox.html", name=url.toString(name_a), message=url.toString(message), previous=url.toString(previous))
 
 @app.route("/<url>/")
 def notFound(url):

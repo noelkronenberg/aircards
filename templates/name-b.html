@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+    <head>
+        <title>AirCards: Send a message via AirDrop.</title>
+        <link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+
+            <a href="/">
+                <img class="logo-header" src="{{ url_for('static', filename='airdrop-icon.svg') }}" alt="AirDrop"/>
+            </a>
+            
+            <!-- source: https://icons8.com/icons/set/airdrop-logo -->
+
+            <h1>
+                Great! <br>
+                Now one last step:
+            </h1>
+
+            <form action="#" method="post" class="desktop">
+                <p><input type="text" name="userInput" placeholder="Type your device name" class="input-field"/></p>
+                <p><input type="submit" value="Continue" class="input-button"/></p>
+            </form>
+
+            <div class="mobile">
+                <h2>Type your device name: </h2>
+                <form action="#" method="post">
+                    <p><input type="text" name="userInput" placeholder="" class="input-field"/></p>
+                    <p><input type="submit" value="Continue" class="input-button"/></p>
+                </form>
+            </div>
+
+        </div>
+
+        <script>
+            function copyEvent(id)
+            {
+                var str = document.getElementById(id);
+                window.getSelection().selectAllChildren(str);
+                document.execCommand("Copy")
+            }
+        </script>
+
+    </body>
+</html>
