@@ -27,6 +27,8 @@ def cards():
     else:
         return render_template("cards.html")
 
+# basic flask framework reference: https://www.youtube.com/watch?v=mqhxxeeTbu0
+
 @app.route("/question/<name>/<question>/", methods=["POST", "GET"])
 def question(name, question):
     if request.method == "POST":
@@ -116,5 +118,3 @@ def notFound(url):
 
 if __name__ == "__main__":
     app.run(debug=True)
-
-# reference: https://www.youtube.com/watch?v=mqhxxeeTbu0
