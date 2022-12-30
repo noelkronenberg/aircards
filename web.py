@@ -14,6 +14,8 @@ message_link = ""
 def home():
         return render_template("index.html")
 
+# START: card game
+
 @app.route("/cards/", methods=["POST", "GET"])
 def cards():
     if request.method == "POST":
@@ -44,6 +46,10 @@ def question(name, question):
 @app.route("/response/<name>/<question>/<response>/")
 def response(name, question, response):
     return render_template("response.html", name=url.toString(name), question=url.toString(question), response=url.toString(response))
+
+# END: card game
+
+# START: messages
 
 # 1. Person A: get first message (of person A)
 
@@ -110,6 +116,8 @@ def inbox_b(name_a, name_b, message, previous):
         message_link = f"{domain}/message/inbox/a/{name_a}/{name_b}/{message}/{answer}"
         return render_template("send-message.html", name=url.toString(name_a), message_link=message_link)
     return render_template("inbox.html", name=url.toString(name_a), message=url.toString(message), previous=url.toString(previous))
+
+# END: messages
 
 @app.route("/<url>/")
 def notFound(url):
