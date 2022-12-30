@@ -5,7 +5,7 @@ import url
 app = Flask(__name__)
 
 name = "someone"
-domain = "http://127.0.0.1:5000/"
+domain = "http://127.0.0.1:5000"
 question = ""
 message = ""
 message_link = ""
