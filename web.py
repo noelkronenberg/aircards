@@ -1,6 +1,5 @@
-from flask import Flask, redirect, url_for, render_template, request, flash, Markup
+from flask import Flask, redirect, url_for, render_template, request
 import questions
-import gunicorn
 import url
 
 app = Flask(__name__)
