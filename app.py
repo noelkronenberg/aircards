@@ -4,7 +4,7 @@ import url
 app = Flask(__name__)
 
 name = "someone"
-domain = "http://127.0.0.1:5000"
+domain = "https://aircards.pythonanywhere.com"
 question = ""
 message = ""
 message_link = ""
