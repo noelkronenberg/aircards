@@ -5,6 +5,8 @@ Each interaction is saved and transferred through URL parameters.
 
 ## Set-up
 
+> You may try a demo version [here](https://aircards.pythonanywhere.com/)
+
 1. install requirements:
     - Python (tested: 3.9.10)
     - Flask (tested: 2.1.3)
