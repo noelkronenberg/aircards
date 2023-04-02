@@ -1,5 +1,4 @@
 from flask import Flask, redirect, url_for, render_template, request
-import questions
 import url
 
 app = Flask(__name__)
@@ -13,41 +12,6 @@ message_link = ""
 @app.route("/")
 def home():
         return render_template("index.html")
-
-# START: card game
-
-@app.route("/cards/", methods=["POST", "GET"])
-def cards():
-    if request.method == "POST":
-        name: str = request.form["userInput"]
-        question = str(questions.get_question())
-        name = url.toUrl(name)
-        question = url.toUrl(question)
-        link = f"{domain}/question/{name}/{question}"
-        return render_template("start.html", question=url.toString(question), link=link)
-    else:
-        return render_template("cards.html")
-
-# basic flask framework reference: https://www.youtube.com/watch?v=mqhxxeeTbu0
-
-@app.route("/question/<name>/<question>/", methods=["POST", "GET"])
-def question(name, question):
-    if request.method == "POST":
-        # question = question[:-1] # remove question mark
-        userInput: str = request.form["userInput"]
-        userInput = url.toUrl(userInput)
-        name = url.toUrl(name)
-        question = url.toUrl(question)
-        link = f"{domain}/response/{name}/{question}/{userInput}"
-        return render_template("send-answer.html", name=url.toString(name), link=link)
-    else:
-        return render_template("question.html", name=url.toString(name), question=url.toString(question))
-
-@app.route("/response/<name>/<question>/<response>/")
-def response(name, question, response):
-    return render_template("response.html", name=url.toString(name), question=url.toString(question), response=url.toString(response))
-
-# END: card game
 
 # START: messages
 
@@ -93,7 +57,7 @@ def name_b(name_a, message, answer):
         return render_template("send-message.html", name=url.toString(name_a), message_link=message_link)
     return render_template("name-b.html", name=url.toString(name_a), message=url.toString(message))
 
-# 4. Person A: receive previous answer (of person B), send new message (to person B)
+# 5. Person A: receive previous answer (of person B), send new message (to person B)
 
 @app.route("/message/inbox/a/<name_a>/<name_b>/<previous>/<message>/", methods=["POST", "GET"])
 def inbox_a(name_a, name_b, message, previous):
@@ -105,7 +69,7 @@ def inbox_a(name_a, name_b, message, previous):
         return render_template("send-message.html", name=url.toString(name_b), message_link=message_link)
     return render_template("inbox.html", name=url.toString(name_b), message=url.toString(message), previous=url.toString(previous))
 
-# 4. Person B: receive previous answer (of person A), send new message (to person A)
+# 6. Person B: receive previous answer (of person A), send new message (to person A)
 
 @app.route("/message/inbox/b/<name_a>/<name_b>/<previous>/<message>/", methods=["POST", "GET"])
 def inbox_b(name_a, name_b, message, previous):
